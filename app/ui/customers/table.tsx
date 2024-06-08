@@ -1,20 +1,14 @@
-import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
-import {
-  CustomersTableType,
-  FormattedCustomersTable,
-} from '@/app/lib/definitions';
-import { fetchFilteredCustomers } from '@/app/lib/data';
+import Image from 'next/image'
+import { fetchFilteredCustomers } from '@/app/lib/data'
 
 export default async function CustomersTable({
   query,
   currentPage,
 }: {
-  query: string;
-  currentPage: number;
+  query: string
+  currentPage: number
 }) {
-  const data = await fetchFilteredCustomers(query, currentPage);
+  const data = await fetchFilteredCustomers(query, currentPage)
 
   return (
     <div className="w-full">
@@ -120,5 +114,5 @@ export default async function CustomersTable({
         </div>
       </div>
     </div>
-  );
+  )
 }

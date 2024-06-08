@@ -1,27 +1,27 @@
-import Pagination from '@/app/ui/invoices/pagination';
-import Search from '@/app/ui/search';
-import Table from '@/app/ui/customers/table';
-import { lusitana } from '@/app/ui/fonts';
-import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
-import { Suspense } from 'react';
-import { Metadata } from 'next';
-import { fetchCustomersPages, fetchFilteredCustomers, fetchInvoicesPages } from '@/app/lib/data';
+import Pagination from '@/app/ui/invoices/pagination'
+import Search from '@/app/ui/search'
+import Table from '@/app/ui/customers/table'
+import { lusitana } from '@/app/ui/fonts'
+import { InvoicesTableSkeleton } from '@/app/ui/skeletons'
+import { Suspense } from 'react'
+import { Metadata } from 'next'
+import { fetchCustomersPages } from '@/app/lib/data'
 
 export const metadata: Metadata = {
   title: 'Customers',
-};
+}
 
 export default async function Page({
   searchParams,
 }: {
   searchParams?: {
-    query?: string;
-    page?: string;
-  };
+    query?: string
+    page?: string
+  }
 }) {
-  const query = searchParams?.query || '';
-  const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchCustomersPages(query);
+  const query = searchParams?.query || ''
+  const currentPage = Number(searchParams?.page) || 1
+  const totalPages = await fetchCustomersPages(query)
 
   return (
     <div className="w-full">
@@ -38,5 +38,5 @@ export default async function Page({
         <Pagination totalPages={totalPages} />
       </div>
     </div>
-  );
+  )
 }
